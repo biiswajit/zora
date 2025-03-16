@@ -1,0 +1,14 @@
+{
+  "name": "docker",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "pnpm docker:start",
+    "docker:start": "sudo docker compose up #remove sudo command if using Windows/Mac",
+    "docker:stop": "sudo docker compose down #remove sudo command if using Windows/Mac"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

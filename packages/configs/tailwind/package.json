@@ -1,0 +1,12 @@
+{
+  "name": "@zora/tailwind-config",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "exports": {
+    "./styles": "./styles.css"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

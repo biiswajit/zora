@@ -1,0 +1,13 @@
+/* Custom fonts for zora */
+@font-face {
+  font-family: body;
+  font-style: normal;
+  font-display: swap;
+  src: url("./fonts/Inter-VariableFont_opsz\,wght.ttf")
+}
+@font-face {
+  font-family: body;
+  font-style: italic;
+  font-display: swap;
+  src: url("./fonts/Inter-Italic-VariableFont_opsz\,wght.ttf");
+}

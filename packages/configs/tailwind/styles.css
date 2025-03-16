@@ -1,0 +1,7 @@
+@import "./colors.css";
+@import "./fonts.css";
+
+@theme {
+    /* Custom fonts */
+    --font-body: "body";
+}

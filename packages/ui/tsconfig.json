@@ -1,7 +1,12 @@
 {
-  "extends": "@repo/typescript-config/react-library.json",
+  "extends": "@zora/typescript-config/react-library.json",
   "compilerOptions": {
-    "outDir": "dist"
+    "outDir": "dist",
+    "baseUrl": ".",
+    "paths": {
+      "@/components/*": ["./src/components/*"],
+      "@/sections/*": ["./src/sections/*"]
+    }
   },
   "include": ["src"],
   "exclude": ["node_modules", "dist"]

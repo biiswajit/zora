@@ -1,0 +1,13 @@
+@theme {
+    /* Zora accent color */
+    --color-blue: #635bff;
+    /* Zora primary colors */
+    --color-gray-100: #f6f9fc;
+    --color-gray-0: #c3d7eb;
+    /* Zora secondary color */
+    --color-white: #ffffff;
+    /* Zora font color */
+    --color-black: #051321;
+    /* Zora destructive color */
+    --color-red: #e52020;
+}
