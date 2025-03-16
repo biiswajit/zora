@@ -2,6 +2,7 @@
   "name": "zora",
   "private": true,
   "scripts": {
+    "clean": "turbo run clean",
     "build": "turbo run build",
     "dev": "turbo run dev",
     "lint": "turbo run lint",

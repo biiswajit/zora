@@ -1,0 +1,34 @@
+{
+  "name": "@zora/database",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "exports": {
+    ".": {
+      "types": "./src/prisma.ts",
+      "default": "./dist/prisma.js"
+    }
+  },
+  "scripts": {
+    "clean": "rm -rf ./dist && tsc --build --clean",
+    "build": "tsc --build",
+    "generate": "prisma generate --schema ./schema",
+    "migrate": "prisma migrate dev --schema ./schema",
+    "reset": "prisma migrate reset --schema ./schema",
+    "check-types": "tsc --noEmit",
+    "lint": "eslint --max-warnings 0"
+  },
+  "devDependencies": {
+    "@zora/typescript-config": "workspace:*",
+    "@zora/eslint-config": "workspace:*",
+    "@types/node": "^22.13.9",
+    "prisma": "^6.4.1",
+    "typescript": "^5.8.2"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.4.1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

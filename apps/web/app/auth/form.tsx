@@ -1,10 +1,7 @@
-import { Button } from "@zora/ui/components/button";
-import { Google } from "@zora/ui/icons/google";
-import { GitHub } from "@zora/ui/icons/github";
-import { Microsoft } from "@zora/ui/icons/microsoft";
-import { LinkedIn } from "@zora/ui/icons/linkedin";
 import { ComponentProps } from "react";
 import { clsx } from "clsx";
+import { Google, GitHub, Microsoft, LinkedIn } from "@zora/ui/icons";
+import { Button } from "@zora/ui/components";
 
 export type AuthFormProps = ComponentProps<"form">;
 

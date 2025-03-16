@@ -3,9 +3,18 @@
   "version": "0.0.0",
   "private": true,
   "exports": {
-    "./*": "./src/*.tsx"
+    "./components": {
+      "types": "./src/components/index.tsx",
+      "default": "./dist/components/index.js"
+    },
+    "./icons": {
+      "types": "./src/icons/index.tsx",
+      "default": "./dist/icons/index.js"
+    }
   },
   "scripts": {
+    "clean": "rm -rf dist && tsc --build --clean",
+    "build": "tsc --build",
     "lint": "eslint . --max-warnings 0",
     "generate:component": "turbo gen react-component",
     "check-types": "tsc --noEmit"
