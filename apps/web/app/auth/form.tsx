@@ -1,7 +1,9 @@
+"use client";
 import { ComponentProps } from "react";
 import { clsx } from "clsx";
-import { Google, GitHub, Microsoft, LinkedIn } from "@zora/ui/icons";
+import { Google, GitHub, Discord } from "@zora/ui/icons";
 import { Button } from "@zora/ui/components";
+import { handleSignIn } from "@/auth/handle-signin";
 
 export type AuthFormProps = ComponentProps<"form">;
 
@@ -10,21 +12,17 @@ export default function AuthForm({ className, ...props }: AuthFormProps) {
 
   return (
     <form className={classes} {...props}>
-      <Button className="py-2 rounded-lg flex gap-2 justify-center">
+      <Button onClick={async () => await handleSignIn("google")} className="py-2 rounded-lg flex gap-2 justify-center">
         <Google className="w-[24px] h-[24px]" />
         Continue with Google
       </Button>
-      <Button className="py-2 rounded-lg flex gap-2 justify-center">
+      <Button onClick={async () => await handleSignIn("github")} className="py-2 rounded-lg flex gap-2 justify-center">
         <GitHub className="w-[24px] h-[24px]" />
         Continue with GitHub
       </Button>
-      <Button className="py-2 rounded-lg flex gap-2 justify-center">
-        <Microsoft className="w-[24px] h-[24px]" />
-        Continue with Microsoft
-      </Button>
-      <Button className="py-2 rounded-lg flex gap-2 justify-center">
-        <LinkedIn className="w-[24px] h-[24px]" />
-        Continue with LinkedIn
+      <Button onClick={async () => await handleSignIn("discord")} className="py-2 rounded-lg flex gap-2 justify-center">
+        <Discord className="w-[24px] h-[24px]" />
+        Continue with Discord
       </Button>
     </form>
   );

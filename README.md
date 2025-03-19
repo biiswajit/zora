@@ -1,10 +1,10 @@
 <div align="center">
 
 <picture>
-  <img alt="logo" src="https://github.com/biiswajit/assets/blob/b7359b88081feda1005832f80a168eb8fc9c91a3/echo_banner_v0.png?raw=true">
+  <img alt="logo" src="https://github.com/biiswajit/assets/blob/main/zora_banner.png?raw=true">
 </picture>
 
-<h3>Open Source GPT Mapper</h3>
+<h3>Zora will map your simple text prompt to user profiles you might want to see</h3>
 
 [Instagram](https://instagram.com/biswajitmalakarmeta) | [Website](https://linktr.ee/biiswajit) | [X](https://x.com/biswajittwt) | [LinkedIn](https://www.linkedin.com/in/biswajitin/)
 

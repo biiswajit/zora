@@ -8,7 +8,9 @@
     ],
     "baseUrl": ".",
     "paths": {
-      "@/styles/*": ["./styles/*"]
+      "@/styles/*": ["./styles/*"],
+      "@/auth/*": ["./lib/auth/*"],
+      "@/constants/*": ["./lib/constants/*"]
     }
   },
   "include": [

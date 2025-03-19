@@ -10,8 +10,8 @@
     }
   },
   "scripts": {
-    "clean": "rm -rf ./dist && tsc --build --clean",
-    "build": "tsc --build",
+    "clean": "rm -rf ./dist && pnpm tsc --build --clean",
+    "build": "pnpm tsc --build",
     "generate": "prisma generate --schema ./schema",
     "migrate": "prisma migrate dev --schema ./schema",
     "reset": "prisma migrate reset --schema ./schema",

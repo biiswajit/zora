@@ -11,22 +11,26 @@
     "check-types": "tsc --noEmit"
   },
   "dependencies": {
-    "@zora/ui": "workspace:*",
+    "@prisma/client": "^6.4.1",
     "@tailwindcss/postcss": "^4.0.14",
+    "@zora/database": "workspace:*",
     "@zora/tailwind-config": "workspace:*",
+    "@zora/ui": "workspace:*",
+    "better-auth": "^1.2.4",
     "clsx": "^2.1.1",
     "next": "^15.2.1",
     "postcss": "^8.5.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "server-only": "^0.0.1",
     "tailwindcss": "^4.0.14"
   },
   "devDependencies": {
-    "@zora/eslint-config": "workspace:*",
-    "@zora/typescript-config": "workspace:*",
     "@types/node": "^22.13.9",
     "@types/react": "19.0.10",
     "@types/react-dom": "19.0.4",
+    "@zora/eslint-config": "workspace:*",
+    "@zora/typescript-config": "workspace:*",
     "eslint": "^9.22.0",
     "typescript": "5.8.2"
   }

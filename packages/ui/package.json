@@ -13,8 +13,8 @@
     }
   },
   "scripts": {
-    "clean": "rm -rf dist && tsc --build --clean",
-    "build": "tsc --build",
+    "clean": "rm -rf dist && pnpm tsc --build --clean",
+    "build": "pnpm tsc --build",
     "lint": "eslint . --max-warnings 0",
     "generate:component": "turbo gen react-component",
     "check-types": "tsc --noEmit"

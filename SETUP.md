@@ -35,6 +35,8 @@ pnpm install
 cp packages/database/.env.example packages/database/.env
 # create .env file in docker package
 cp docker/.env.example docker/.env
+# create .env file in apps/web
+cp apps/web/.env.example apps/web/.env
 ```
 
 6. Build internal packages

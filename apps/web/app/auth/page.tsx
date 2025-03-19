@@ -1,7 +1,17 @@
 import AuthForm from "./form";
 import Link from "next/link";
+import { redirect } from "next/navigation";
+import { auth } from "@/auth/auth";
+import { headers } from "next/headers";
+import { EXISTING_USER_REDIRECT_TO } from "@/constants/urls";
 
-export default function Auth() {
+export default async function Auth() {
+  const session = await auth.api.getSession({ headers: await headers() });
+
+  if (session) {
+    redirect(EXISTING_USER_REDIRECT_TO);
+  }
+
   return (
     <div className="flex felx-row gap-4 items-stretch h-screen w-screen bg-gray-100 p-4">
       <div className="bg-inherit basis-1/1 md:basis-1/2 lg:basis-1/3 flex flex-col gap-10 place-items-center justify-center">
