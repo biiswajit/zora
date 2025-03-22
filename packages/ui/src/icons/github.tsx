@@ -1,4 +1,4 @@
-export function GitHub({ className }: { className?: string }) {
+export function Github({ className }: { className?: string }) {
   return (
     <svg
       className={className}

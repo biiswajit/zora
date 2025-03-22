@@ -1,13 +1,15 @@
 @theme {
-    /* Zora accent color */
-    --color-blue: #635bff;
-    /* Zora primary colors */
-    --color-gray-100: #f6f9fc;
-    --color-gray-0: #c3d7eb;
-    /* Zora secondary color */
-    --color-white: #ffffff;
-    /* Zora font color */
-    --color-black: #051321;
-    /* Zora destructive color */
-    --color-red: #e52020;
+    /* Dark colors */
+    --color-moonshadow: #393939;
+    --color-midnight: #111111;
+    
+    /* White colors */
+    --color-light: #FFFFFF;
+    --color-mistvell: #F3F2F0;
+    --color-dawnlight: #DCD9D4;
+
+    /* Focus colors */
+    --color-fresh: #008EFF;
+    --color-energy: #FC3B2D;
+    --color-emberglow: #BF3131;
 }
