@@ -56,3 +56,10 @@ pnpm build
 ```sh
 pnpm dev
 ```
+
+8. Migrate database schema (if error encounter)
+
+```sh
+cd packages/database # navigate to database package
+pnpm migrate # migrate to postgres database
+```
