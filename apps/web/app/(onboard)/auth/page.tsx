@@ -4,18 +4,12 @@ import { Google, Github, Discord, Spinner } from "@zora/ui/icons";
 import { OAuthButton } from "@zora/ui/components";
 import { OAUTH_PROVIDERS } from "@/constants/types";
 import { handleSignIn } from "@/auth/handle-signin";
-import { clsx } from "clsx";
 
-export function AuthForm() {
+export default function AuthForm() {
   const [method, setMethod] = useState<OAUTH_PROVIDERS | undefined>();
-  const classes = clsx(
-    "flex flex-col gap-4 items-scretch",
-    "bg-mistvell border-t border-dawnlight",
-    "px-8 py-16 md:px-12 md:py-20",
-  );
 
   return (
-    <div className={classes}>
+    <div className="flex flex-col gap-4 w-[360px]">
       <OAuthButton
         label="Continue with Github"
         icon={method === "github" ? <Spinner className="size-4" /> : <Github className="size-4" />}

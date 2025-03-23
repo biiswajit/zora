@@ -13,8 +13,8 @@ export type OAuthButtonProps = ComponentProps<"button"> & { disabled?: boolean; 
 export function Button({ variant = "secondary", disabled = false, label, icon, className, ...props }: ButtonProps) {
   const classes = clsx(
     "font-body font-medium tracking-tight outline outline-dawnlight rounded-[8px]",
-    variant === "primary" && "bg-fresh px-[22px] py-[11px] text-[16px]",
-    variant === "secondary" && "bg-midnight px-[20px] py-[10px] text-[14px]",
+    variant === "primary" && "bg-fresh text-light px-[22px] py-[11px] text-[16px] hover:opacity-90",
+    variant === "secondary" && "bg-midnight text-light px-[20px] py-[10px] text-[14px] hover:opacity-90",
     icon && "flex gap-[8px] justify-center items-center",
     disabled && "opacity-60 hover:cursor-none",
     !disabled && "hover:cursor-pointer",

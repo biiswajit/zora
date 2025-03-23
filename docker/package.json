@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "pnpm docker:start",
+    "dev": "pnpm start",
     "start": "sudo docker compose up #remove sudo command if using Windows/Mac",
     "stop": "sudo docker compose down #remove sudo command if using Windows/Mac"
   },
