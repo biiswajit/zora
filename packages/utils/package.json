@@ -1,0 +1,28 @@
+{
+  "name": "@zora/utils",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "exports": {
+    ".": {
+      "default": "./dist/index.js",
+      "types": "./src/index.ts"
+    }
+  },
+  "scripts": {
+    "clean": "rm -rf ./dist && pnpm tsc --build --clean",
+    "build": "pnpm tsc --build"
+  },
+  "devDependencies": {
+    "@types/amqplib": "^0.10.7",
+    "@zora/eslint-config": "workspace:*",
+    "@zora/typescript-config": "workspace:*"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "amqplib": "^0.10.5",
+    "zod": "^3.24.2"
+  }
+}
