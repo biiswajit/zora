@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "@/styles/fonts";
 import "@/styles/globals.css";
+import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
   title: "Zora",
@@ -10,7 +11,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className={`${Inter.variable} ${Inter.variable}`}>{children}</body>
+      <body className={`${Inter.variable} ${Inter.variable}`}>
+        <Toaster richColors />
+        {children}
+      </body>
     </html>
   );
 }

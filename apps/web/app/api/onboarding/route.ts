@@ -21,15 +21,15 @@ export async function POST(request: NextRequest) {
     });
 
     if (prismaRes?.onboarded) {
-      return NextResponse.json({ success: false, message: "You've already completed this step" }, { status: 403 });
+      return NextResponse.json({ success: false, message: "All set already!" }, { status: 200 });
     }
 
     // 4. Payload Parsing
     let payload;
     try {
       payload = await request.json();
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
-      // eslint-disable-line @typescript-eslint/no-unused-vars
       return NextResponse.json({ success: false, message: "Invalid request body" }, { status: 400 });
     }
 
@@ -72,9 +72,7 @@ export async function POST(request: NextRequest) {
         throw new Error("Failed to do the transaction");
       }
 
-      const res = NextResponse.json({ success: true, message: "Your description has been saved" }, { status: 200 });
-      NextResponse.redirect("/discovery");
-      return res;
+      return NextResponse.json({ success: true, message: "Your description has been saved" }, { status: 200 });
     } catch (mqError) {
       console.error("RabbitMQ Error:", mqError);
       return NextResponse.json({ success: false, message: "We're facing some internal issues" }, { status: 500 });

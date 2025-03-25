@@ -2,11 +2,15 @@
 import { useEffect, useRef, useState } from "react";
 import { Textarea, Button } from "@zora/ui/components";
 import axios from "axios";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 export function OnboardingForm({ userId }: { userId: string }) {
   const [description, setDescription] = useState<string>("");
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const router = useRouter();
+
   useEffect(() => {
     textareaRef.current?.focus();
   }, []);
@@ -14,17 +18,14 @@ export function OnboardingForm({ userId }: { userId: string }) {
   async function handleClick() {
     if (isSubmitting) return;
     setIsSubmitting(true);
-    try {
-      const res = await axios.post(`${process.env.NEXT_PUBLIC_APP_URL}/api/onboarding`, {
-        userId,
-        description: description.trim(),
-      });
-      console.log(JSON.stringify(res.data));
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setIsSubmitting(false);
-    }
+    axios
+      .post(`${process.env.NEXT_PUBLIC_APP_URL}/api/onboarding`, { userId, description: description.trim() })
+      .then((res) => {
+        toast.success(res.data.message);
+        router.replace("/discover");
+      })
+      .catch(() => toast.error(JSON.stringify("Error occured! refresh the page or try again later")))
+      .finally(() => setIsSubmitting(false));
   }
 
   return (

@@ -9,5 +9,5 @@ export default async function OnboardingPage() {
     redirect("/auth");
   }
 
-  return <OnboardingForm userId={"something"} />;
+  return <OnboardingForm userId={session.session.userId} />;
 }

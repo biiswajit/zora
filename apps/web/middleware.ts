@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getSessionCookie } from "better-auth/cookies";
 
-const PROTECTED_ROUTES = ["/logout", "/onboarding", "/api", "/discovery"];
+const PROTECTED_ROUTES = ["/logout", "/onboarding", "/api", "/discover"];
 
 export async function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
@@ -12,7 +12,7 @@ export async function middleware(request: NextRequest) {
   }
 
   if (sessionCookie && pathname.startsWith("/auth")) {
-    return NextResponse.redirect(new URL("/discovey", request.url));
+    return NextResponse.redirect(new URL("/discover", request.url));
   }
 
   return NextResponse.next();
