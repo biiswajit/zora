@@ -1,1 +1,1 @@
-export * from "./description-queue";
+export * from "./description";

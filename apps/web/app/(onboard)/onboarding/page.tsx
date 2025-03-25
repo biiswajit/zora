@@ -1,21 +1,13 @@
-"use client";
-import { useEffect, useRef } from "react";
-import { Textarea, Button } from "@zora/ui/components";
+import { auth } from "@/auth/auth";
+import { headers } from "next/headers";
+import { redirect } from "next/navigation";
+import { OnboardingForm } from "./form";
 
-export default function OnboardingForm() {
-  const textareaRef = useRef<HTMLTextAreaElement>(null);
-  useEffect(() => {
-    textareaRef.current?.focus();
-  }, []);
+export default async function OnboardingPage() {
+  const session = await auth.api.getSession({ headers: await headers() });
+  if (!session?.session) {
+    redirect("/auth");
+  }
 
-  return (
-    <div className="flex flex-col gap-4 w-[360px]">
-      <Textarea
-        ref={textareaRef}
-        className="bg-light outline-dawnlight h-[140px]"
-        placeholder="Write your description here."
-      />
-      <Button label="Save" variant="primary" />
-    </div>
-  );
+  return <OnboardingForm userId={"something"} />;
 }

@@ -1,1 +1,1 @@
-{"root":["./src/index.ts","./src/description-queue/common.ts","./src/description-queue/consumer.ts","./src/description-queue/index.ts","./src/description-queue/producer.ts"],"version":"5.8.2"}
+{"root":["./src/index.ts","./src/description/common.ts","./src/description/consumer.ts","./src/description/index.ts","./src/description/producer.ts"],"version":"5.8.2"}
