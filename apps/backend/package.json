@@ -1,0 +1,30 @@
+{
+  "name": "backend",
+  "version": "0.0.0",
+  "description": "API server for zora platform",
+  "main": "index.js",
+  "scripts": {
+    "build": "pnpm tsc --build --verbose && tsc-alias",
+    "start": "pnpm build && pnpm run dev",
+    "dev": "node dist/index.js"
+  },
+  "dependencies": {
+    "dotenv": "^17.1.0",
+    "express": "^5.1.0",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.3",
+    "@zora/eslint-config": "workspace:*",
+    "@zora/typescript-config": "workspace:*",
+    "tsc-alias": "^1.8.16",
+    "typescript": "^5.8.3"
+  },
+  "keywords": [
+    "backend",
+    "api",
+    "express"
+  ],
+  "author": "Biswajit Malakar <mebiswajitmalakar@gmail.com>",
+  "license": "ISC"
+}
