@@ -1,0 +1,16 @@
+# Ignore artifacts:
+build
+coverage
+dist
+node_modules
+logs
+public
+.turbo
+.next
+
+**/*.git
+**/*.js
+**/*.d.ts
+**/*.d.ts.map
+**/*.json
+**/*.md
