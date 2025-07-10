@@ -6,6 +6,7 @@
     "baseUrl": ".",
     "paths": {
       "@environment": ["./src/config/environment.ts"],
+      "@logger": ["./src/config/logger.ts"],
     }
   },
   "include": ["src"],
