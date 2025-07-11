@@ -1,4 +1,3 @@
-# Ignore artifacts:
 build
 coverage
 dist
@@ -7,6 +6,7 @@ logs
 public
 .turbo
 .next
+.DS_Store
 
 **/*.git
 **/*.js
@@ -14,3 +14,8 @@ public
 **/*.d.ts.map
 **/*.json
 **/*.md
+**/*.tsbuildinfo
+**/*.mjs
+
+pnpm-lock.yaml
+.lintstagedrc

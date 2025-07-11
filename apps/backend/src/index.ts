@@ -7,7 +7,7 @@ import yaml from "yaml";
 
 import app from "./app";
 
-const specPath = path.resolve(__dirname, "../openapi/spec.yaml");
+const specPath = path.resolve(__dirname, "../openapi/spec.yml");
 const file = fs.readFileSync(specPath, "utf8");
 const openapiSpec = yaml.parse(file);
 

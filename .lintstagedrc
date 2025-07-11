@@ -1,0 +1,4 @@
+{
+    "*": ["pnpm format:check"],
+    "*.{ts, tsx}": ["pnpm lint"]
+}
