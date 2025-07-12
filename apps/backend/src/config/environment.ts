@@ -7,7 +7,8 @@ const envSchema = z.object({
     APP_NAME: z.string(),
     NODE_ENV: z.enum(["development", "test", "production"]),
     HOST: z.string(),
-    PORT: z.string().default("8080").transform(Number)
+    PORT: z.string().default("8080").transform(Number),
+    CLIENT_URL: z.string()
 });
 
 const { success, data: env, error } = envSchema.safeParse(process.env);
@@ -19,5 +20,6 @@ export default {
     APP_NAME: env.APP_NAME,
     NODE_ENV: env.NODE_ENV,
     HOST: env.HOST,
-    PORT: env.PORT
+    PORT: env.PORT,
+    CLIENT_URL: env.CLIENT_URL
 };
