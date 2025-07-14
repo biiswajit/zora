@@ -1,0 +1,12 @@
+{
+  "name": "docker",
+  "version": "0.0.0",
+  "scripts": {
+    "start": "docker compose up",
+    "stop": "docker compose down",
+    "dev": "pnpm start"
+  },
+  "keywords": ["docker", "development"],
+  "author": "Biswajit Malalkar <mebiswajitmalakar@gmail.com>",
+  "license": "ISC"
+}

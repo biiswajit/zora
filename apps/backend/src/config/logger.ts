@@ -38,7 +38,9 @@ const logger = winston.createLogger({
             maxsize: 10000000,
             maxFiles: 10
         }),
-        new winston.transports.Console({ format: winston.format.combine(winston.format.colorize({ all: true })) })
+        new winston.transports.Console({
+            format: winston.format.combine(winston.format.colorize({ all: true }))
+        })
     ]
 });
 

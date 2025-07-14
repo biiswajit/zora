@@ -1,0 +1,35 @@
+{
+  "name": "@zora/prisma",
+  "version": "0.0.0",
+  "description": "Prisma with postgresql database",
+  "main": "./index.ts",
+  "types": "./index.ts",
+  "exports": {
+    ".": "./index.ts"
+  },
+  "scripts": {
+    "generate": "pnpm dlx prisma generate",
+    "format": "pnpm dlx prisma format",
+    "push": "pnpm dlx prisma db push",
+    "reset": "pnpm dlx prisma reset",
+    "migrate": "pnpm dlx prisma migrate dev"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.11.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.3",
+    "@zora/typescript-config": "workspace:*",
+    "prisma": "^6.11.1"
+  },
+  "prisma": {
+    "schema": "."
+  },
+  "keywords": [
+    "prisma",
+    "postgresql",
+    "database"
+  ],
+  "author": "Biswajit Malakar <mebiswajitmalakar@gmail.com>",
+  "license": "ISC"
+}

@@ -9,6 +9,7 @@
     "dev": "node dist/index.js"
   },
   "dependencies": {
+    "@zora/prisma": "workspace:*",
     "compression": "^1.8.0",
     "cors": "^2.8.5",
     "dotenv": "^17.1.0",
