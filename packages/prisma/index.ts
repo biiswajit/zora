@@ -1,6 +1,2 @@
-import { prisma } from "./client";
-
-export * from "@prisma/client";
+export * from "./generated/prisma";
 export { prisma } from "./client";
-
-prisma.user;

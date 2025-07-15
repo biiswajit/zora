@@ -8,19 +8,22 @@
     ".": "./index.ts"
   },
   "scripts": {
-    "generate": "pnpm dlx prisma generate",
+    "validate": "pnpm dlx prisma validate",
     "format": "pnpm dlx prisma format",
-    "push": "pnpm dlx prisma db push",
-    "reset": "pnpm dlx prisma reset",
-    "migrate": "pnpm dlx prisma migrate dev"
+    "generate": "pnpm dlx prisma generate",
+    "push": "pnpm dlx prisma db push --skip-generate",
+    "reset": "pnpm dlx prisma migrate reset --skip-generate --skip-seed",
+    "seed": "ts-node seed.ts"
   },
   "dependencies": {
     "@prisma/client": "^6.11.1"
   },
   "devDependencies": {
+    "@faker-js/faker": "^9.9.0",
     "@types/node": "^22.15.3",
     "@zora/typescript-config": "workspace:*",
-    "prisma": "^6.11.1"
+    "prisma": "^6.11.1",
+    "ts-node": "^10.9.2"
   },
   "prisma": {
     "schema": "."
