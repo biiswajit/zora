@@ -1,0 +1,16 @@
+model Link {
+  id          String    @id @default(uuid())
+  url         String
+  domain      String // domain of the link (e.g. https://github.com/biiswajit -> github)
+  title       String
+  suspicious  Boolean   @default(false) // dangerous link or not
+  clicks      Int       @default(0) // number of clicks
+  description String?
+  stared      Boolean   @default(false)
+  image       String? // associated custom image with link
+  lastClicked DateTime? // when last time link was clicked
+
+  // links belongs to user not profile
+  userId String
+  user   User   @relation(fields: [userId], references: [id])
+}

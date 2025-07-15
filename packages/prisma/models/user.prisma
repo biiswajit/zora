@@ -1,4 +1,13 @@
 model User {
-  id       String @id @default(uuid())
-  username String
+  id        String   @id @default(uuid())
+  username  String   @unique // unique username for user (e.g. @biiswajit)
+  name      String
+  email     String   @unique
+  lastLogin DateTime // last time user was logged in
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  banned    Boolean  @default(false) // user banned on this platform or not
+
+  links   Link[] // user can upload multiple links
+  profile Profile? // user can have atmost one profile
 }

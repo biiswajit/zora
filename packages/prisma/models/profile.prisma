@@ -1,0 +1,26 @@
+// Profile contain public information of user
+model Profile {
+  id            String  @id @default(uuid())
+  gender        Gender
+  industry      String // industry user is related with
+  openForCollab Boolean @default(true) // user willing to collab with other user on project or not
+  bio           String? // Short description about user (displayed at the top of profile)
+  avatar        String? // user's profile picture
+  website       String? // website link for user portfolio (displayed at the top of profile)
+  city          String? // city where user live in
+  country       String? // country where user live in
+  language      String? // language that user speak
+  pronounce     String?
+  // timezone derived from city or country
+  // timezone can be used to display localtime on profile
+  timezone      String?
+
+  userId String @unique
+  user   User   @relation(fields: [userId], references: [id])
+}
+
+enum Gender {
+  Male
+  Female
+  Others
+}
