@@ -15,9 +15,9 @@ app.use("/reference", swaggerUI.serve, swaggerUI.setup(openapiSpec));
 
 app.listen(environment.PORT, () => {
     logger.info(
-        `Zora API server is listening on ${environment.NODE_ENV === "development" ? "http" : "https"}://${environment.HOST}/${environment.PORT}`
+        `Zora API server is listening on ${environment.NODE_ENV === "development" ? "http" : "https"}://${environment.HOST}:${environment.PORT}`
     );
     logger.info(
-        `Zora API reference is listening on ${environment.NODE_ENV === "development" ? "http" : "https"}://${environment.HOST}/${environment.PORT}/reference`
+        `Zora API reference is listening on ${environment.NODE_ENV === "development" ? "http" : "https"}://${environment.HOST}:${environment.PORT}/reference`
     );
 });

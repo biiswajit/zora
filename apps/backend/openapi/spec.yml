@@ -1,1 +1,88 @@
-# openapi spec goes here
+openapi: 3.1.0
+
+info:
+  title: Zora
+  description: API collection for Zora platform
+  contact:
+    name: Biswajit Malakar
+    email: mebiswajitmalakar@gmail.com
+
+servers:
+  - url: http://localhost:8080
+    description: Zora development API collection
+
+paths:
+  /users/{username}:
+    get:
+      description: Returns a single user with given username
+      operationId: getUserByUsername
+      tags:
+        - Users
+      parameters:
+        - name: username
+          in: path
+          required: true
+          description: The username of the user you want to get
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Returns a single user information with given username
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: "#/components/schemas/User"
+
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+        username:
+          type: string
+        name:
+          type: string
+        email:
+          type: string
+        created_at:
+          type: string
+        updated_at:
+          type: string
+        banned:
+          type: boolean
+          description: Whether user has banned from this platform or not
+        gender:
+          type: string
+        industry:
+          type: string
+        open_for_bollab:
+          type: boolean
+          description: Whether user is open to do collaboration with others or not
+        bio:
+          type: string
+        avatar:
+          type: string
+          description: Profile picture
+        website:
+          type: string
+        city:
+          type: string
+        country:
+          type: string
+        language:
+          type: string
+        pronounce:
+          type: string
+        timezone:
+          type: string
+
+tags:
+  - name: Miscellaneous
+    description: Misc API
+  - name: Users
+    description: User API
