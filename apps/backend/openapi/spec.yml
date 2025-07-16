@@ -27,7 +27,7 @@ paths:
             type: string
       responses:
         "200":
-          description: Returns a single user information with given username
+          description: A single user information found with given username
           content:
             application/json:
               schema:
@@ -35,51 +35,92 @@ paths:
                 properties:
                   data:
                     $ref: "#/components/schemas/User"
+        "404":
+          description: User with given username not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "400":
+          description: Received an invalid username format
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
 
 components:
   schemas:
+    Error:
+      type: object
+      properties:
+        type:
+          type: string
+        code:
+          type: string
+        message:
+          type: string
+        details:
+          type: string
+          nullable: true
     User:
       type: object
       properties:
         id:
           type: string
+          format: uuid
+          readOnly: true
         username:
           type: string
+          pattern: ^[a-zA-Z0-9_]{1,15}$
         name:
           type: string
         email:
           type: string
+          format: email
         created_at:
           type: string
+          readOnly: true
         updated_at:
           type: string
+          readOnly: true
         banned:
           type: boolean
           description: Whether user has banned from this platform or not
+          readOnly: true
         gender:
           type: string
+          nullable: true
         industry:
           type: string
+          nullable: true
         open_for_bollab:
           type: boolean
           description: Whether user is open to do collaboration with others or not
         bio:
           type: string
+          nullable: true
         avatar:
           type: string
           description: Profile picture
+          nullable: true
         website:
           type: string
+          nullable: true
         city:
           type: string
+          nullable: true
         country:
           type: string
+          nullable: true
         language:
           type: string
+          nullable: true
         pronounce:
           type: string
+          nullable: true
         timezone:
           type: string
+          nullable: true
 
 tags:
   - name: Miscellaneous
