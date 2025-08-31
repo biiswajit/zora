@@ -1,20 +1,26 @@
 {
-  "name": "zora",
-  "private": true,
-  "scripts": {
-    "build": "turbo run build",
-    "dev": "turbo run dev",
-    "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "check-types": "turbo run check-types"
-  },
-  "devDependencies": {
-    "prettier": "^3.6.2",
-    "turbo": "^2.5.6",
-    "typescript": "5.9.2"
-  },
-  "packageManager": "pnpm@9.0.0",
-  "engines": {
-    "node": ">=18"
-  }
+    "name": "zora",
+    "private": true,
+    "scripts": {
+        "build": "turbo run build",
+        "dev": "turbo run dev",
+        "check-types": "turbo run check-types",
+        "format": "pnpm exec biome format",
+        "format:fix": "pnpm exec biome format --write",
+        "lint": "pnpm exec biome lint",
+        "lint:fix": "pnpm exec biome lint --write",
+        "format-and-lint": "pnpm exec biome check",
+        "format-and-lint:fix": "pnpm exec biome check --write",
+        "prepare": "husky"
+    },
+    "devDependencies": {
+        "@biomejs/biome": "2.2.2",
+        "husky": "^9.1.7",
+        "turbo": "^2.5.6",
+        "typescript": "5.9.2"
+    },
+    "packageManager": "pnpm@9.0.0",
+    "engines": {
+        "node": ">=18"
+    }
 }

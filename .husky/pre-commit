@@ -1,0 +1,5 @@
+#!/bin/sh
+
+pnpm exec biome check --write --no-errors-on-unmatched --staged
+
+git add .
