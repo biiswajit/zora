@@ -1,0 +1,23 @@
+{
+    "name": "backend",
+    "version": "0.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "dev": "tsx watch --clear-screen=false src/index.ts",
+        "build": "tsc"
+    },
+    "dependencies": {
+        "express": "^5.1.0"
+    },
+    "devDependencies": {
+        "@types/express": "^5.0.3",
+        "@types/node": "^22.15.3",
+        "@zora/typescript-config": "workspace:*",
+        "tsx": "^4.20.5",
+        "typescript": "5.9.2"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC"
+}
