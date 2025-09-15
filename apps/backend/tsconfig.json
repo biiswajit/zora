@@ -2,7 +2,14 @@
     "extends": "@zora/typescript-config/base.json",
     "compilerOptions": {
         "rootDir": "src",
-        "outDir": "dist"
+        "outDir": "dist",
+        "strict": true,
+        "baseUrl": ".",
+        "paths": {
+            "@environment": ["./src/config/environment.ts"],
+            "@logger": ["./src/config/logger.ts"],
+            "@morgan": ["./src/config/morgan.ts"]
+        }
     },
     "include": ["src"],
     "exclude": ["node_modules", "dist"]
