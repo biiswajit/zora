@@ -1,0 +1,4 @@
+{
+    "extends": "@zora/typescript-config/base.json",
+    "exclude": ["node_modules"]
+}

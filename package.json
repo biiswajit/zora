@@ -11,6 +11,8 @@
         "lint:fix": "pnpm exec biome lint --write",
         "format-and-lint": "pnpm exec biome check",
         "format-and-lint:fix": "pnpm exec biome check --write",
+        "format:prisma": "pnpm --filter=@zora/prisma format",
+        "generate:prisma": "pnpm --filter=@zora/prisma generate",
         "prepare": "husky"
     },
     "devDependencies": {
