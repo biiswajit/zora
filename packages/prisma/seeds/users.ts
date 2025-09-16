@@ -3,7 +3,7 @@ import type { User } from "../generated/prisma";
 
 function createFakeUser(): User {
     return {
-        id: faker.number.int(),
+        id: faker.string.uuid(),
         name: faker.person.fullName(),
         email: faker.internet.email(),
     };

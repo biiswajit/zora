@@ -116,6 +116,8 @@ importers:
         specifier: 5.9.2
         version: 5.9.2
 
+  docker: {}
+
   packages/config/typescript: {}
 
   packages/prisma:
@@ -123,6 +125,9 @@ importers:
       '@prisma/client':
         specifier: ^6.16.2
         version: 6.16.2(prisma@6.16.2(typescript@5.9.2))(typescript@5.9.2)
+      dotenv:
+        specifier: ^17.2.2
+        version: 17.2.2
     devDependencies:
       '@faker-js/faker':
         specifier: ^10.0.0
@@ -142,6 +147,8 @@ importers:
       typescript:
         specifier: 5.9.2
         version: 5.9.2
+
+  packages/prisma/generated/prisma: {}
 
   packages/ui:
     dependencies:

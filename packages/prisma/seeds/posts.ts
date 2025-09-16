@@ -2,9 +2,9 @@ import { faker } from "@faker-js/faker";
 import type { Post } from "../generated/prisma";
 import users from "./users";
 
-function createFakePost(userId: number): Post {
+function createFakePost(userId: string): Post {
     return {
-        id: faker.number.int(),
+        id: faker.string.uuid(),
         title: faker.word.noun(),
         content: faker.lorem.paragraph(),
         published: faker.helpers.arrayElement([true, false]),

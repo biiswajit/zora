@@ -16,7 +16,8 @@
         "seed": "tsx seed.ts"
     },
     "dependencies": {
-        "@prisma/client": "^6.16.2"
+        "@prisma/client": "^6.16.2",
+        "dotenv": "^17.2.2"
     },
     "devDependencies": {
         "@faker-js/faker": "^10.0.0",

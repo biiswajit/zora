@@ -2,10 +2,10 @@ import { faker } from "@faker-js/faker";
 import type { Profile } from "../generated/prisma";
 import users from "./users";
 
-function createFakeProfile(userId: number): Profile {
+function createFakeProfile(userId: string): Profile {
     return {
         userId: userId,
-        id: faker.number.int(),
+        id: faker.string.uuid(),
         bio: faker.person.bio(),
     };
 }
