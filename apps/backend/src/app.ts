@@ -1,5 +1,6 @@
 import env from "@environment";
 import morgan from "@morgan";
+import router from "@router";
 import compression from "compression";
 import cors from "cors";
 import express, { type Express } from "express";
@@ -20,5 +21,7 @@ app.use(
 );
 app.use(express.json());
 app.use(compression());
+
+app.use("/v1", router);
 
 export default app;

@@ -8,7 +8,10 @@
         "paths": {
             "@environment": ["./src/config/environment.ts"],
             "@logger": ["./src/config/logger.ts"],
-            "@morgan": ["./src/config/morgan.ts"]
+            "@morgan": ["./src/config/morgan.ts"],
+            "@router": ["./src/routes/index.ts"],
+            "@utils/*": ["./src/utils/*"],
+            "@middlewares/*": ["./src/middlewares/*"]
         }
     },
     "include": ["src"],
