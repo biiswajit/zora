@@ -8,6 +8,8 @@
         "build": "tsc"
     },
     "dependencies": {
+        "@zora/prisma": "workspace:*",
+        "better-auth": "^1.3.11",
         "compression": "^1.8.1",
         "cors": "^2.8.5",
         "dotenv": "^17.2.2",
