@@ -4,7 +4,7 @@ const router: Router = Router();
 
 router.get("/health", (_, res) => {
     return res.status(200).json({
-        status: "API server is up.",
+        status: "Server is up.",
     });
 });
 
