@@ -1,0 +1,23 @@
+{
+    "name": "docs",
+    "version": "0.0.0",
+    "type": "module",
+    "private": true,
+    "scripts": {
+        "dev": "zudoku dev",
+        "build": "zudoku build",
+        "preview": "zudoku preview"
+    },
+    "dependencies": {
+        "react": ">=19.0.0",
+        "react-dom": ">=19.0.0",
+        "zudoku": "0.61.4"
+    },
+    "devDependencies": {
+        "@zora/typescript-config": "workspace:*",
+        "@types/node": "^22",
+        "@types/react": "^19",
+        "@types/react-dom": "^19",
+        "typescript": "^5"
+    }
+}

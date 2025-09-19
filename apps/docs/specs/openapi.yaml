@@ -1,0 +1,12 @@
+openapi: 3.1.0
+
+info:
+  title: Zora
+  description: Zora is a task management platform designed for small teams
+  contact:
+    name: Biswajit Malakar
+    email: mebiswajitmalakar@gmail.com
+
+servers:
+  - url: http://localhost:8080
+    description: Zora development API collection
