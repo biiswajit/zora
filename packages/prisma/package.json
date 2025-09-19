@@ -4,7 +4,7 @@
     "description": "",
     "main": "index.js",
     "exports": {
-        ".": "./index.ts"
+        ".": "./src/index.ts"
     },
     "scripts": {
         "format:check": "pnpm exec prisma format --check",
