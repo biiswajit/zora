@@ -7,24 +7,24 @@
         ".": "./index.ts"
     },
     "scripts": {
-        "validate": "pnpm exec prisma validate",
-        "format": "pnpm exec prisma format",
+        "format:check": "pnpm exec prisma format --check",
+        "format:fix": "pnpm exec prisma format",
         "generate": "pnpm exec prisma generate",
-        "push": "pnpm exec prisma db push --skip-generate",
-        "reset": "pnpm exec prisma migrate reset --skip-generate --skip-seed",
-        "migrate:dev": "pnpm exec prisma migrate dev",
-        "seed": "tsx seed.ts"
+        "generate:watch": "pnpm exec prisma generate --watch",
+        "push": "pnpm exec prisma db push",
+        "push:hard": "pnpm exec prisma db push --force-reset",
+        "migrate": "pnpm exec prisma migrate dev",
+        "reset": "pnpm exec prisma migrate reset",
+        "dev": "pnpm exec prisma studio --port 5555 --browser none"
     },
     "dependencies": {
         "@prisma/client": "^6.16.2",
         "dotenv": "^17.2.2"
     },
     "devDependencies": {
-        "@faker-js/faker": "^10.0.0",
         "@types/node": "^22.15.3",
         "@zora/typescript-config": "workspace:*",
         "prisma": "^6.16.2",
-        "tsx": "^4.20.5",
         "typescript": "5.9.2"
     },
     "keywords": [],
