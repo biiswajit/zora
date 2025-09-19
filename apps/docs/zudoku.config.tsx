@@ -5,10 +5,15 @@ const config: ZudokuConfig = {
         title: "Zora / docs",
         logo: {
             src: {
-                light: "/public/primary.svg",
-                dark: "/public/primary-flip.svg",
+                light: "/primary.svg",
+                dark: "/primary-flip.svg",
             },
             width: "40px",
+        },
+        banner: {
+            message: "Currently in heavy development",
+            color: "caution",
+            dismissible: false,
         },
     },
     navigation: [
@@ -32,10 +37,10 @@ const config: ZudokuConfig = {
             to: "/reference",
         },
         {
-            type: "category",
-            label: "Changelog",
-            icon: "clock",
-            items: [],
+            type: "link",
+            label: "Auth Reference",
+            icon: "shield-user",
+            to: "/auth-reference",
         },
     ],
     redirects: [{ from: "/", to: "/overview" }],
@@ -48,6 +53,11 @@ const config: ZudokuConfig = {
                 showVersionSelect: "if-available",
                 examplesLanguage: "shell",
             },
+        },
+        {
+            type: "file",
+            input: "./specs/better-auth.yaml",
+            path: "/auth-reference",
         },
     ],
 };
