@@ -3,6 +3,7 @@
     "version": "0.0.0",
     "private": true,
     "exports": {
+        "./styles.css": "./src/styles.css",
         "./*": "./src/*.tsx"
     },
     "scripts": {
@@ -10,15 +11,19 @@
         "check-types": "tsc --noEmit"
     },
     "devDependencies": {
-        "@zora/typescript-config": "workspace:*",
         "@types/node": "^22.15.3",
         "@types/react": "19.1.0",
         "@types/react-dom": "19.1.1",
+        "@zora/typescript-config": "workspace:*",
+        "@zora/tailwind-config": "workspace:*",
         "eslint": "^9.34.0",
         "typescript": "5.9.2"
     },
     "dependencies": {
+        "@tailwindcss/postcss": "^4.1.13",
+        "postcss": "^8.5.6",
         "react": "^19.1.0",
-        "react-dom": "^19.1.0"
+        "react-dom": "^19.1.0",
+        "tailwindcss": "^4.1.13"
     }
 }
