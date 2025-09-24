@@ -1,0 +1,6 @@
+@import "tailwindcss";
+@import "@zora/tailwind-config";
+@import "tw-animate-css";
+
+@source "../components/**/*.{ts,tsx}";
+@source "../icons/**/*.{ts,tsx}";

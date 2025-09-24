@@ -1,6 +1,11 @@
 {
     "extends": "@zora/typescript-config/nextjs.json",
     "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "@zora/ui/*": ["../../packages/ui/src/*"],
+            "@/styles/*": ["./styles/*"]
+        },
         "plugins": [
             {
                 "name": "next"

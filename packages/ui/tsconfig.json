@@ -1,7 +1,17 @@
 {
     "extends": "@zora/typescript-config/react-library.json",
     "compilerOptions": {
-        "outDir": "dist"
+        "outDir": "dist",
+        "rootDir": "src",
+        "baseUrl": ".",
+        "paths": {
+            "@zora/ui/*": ["./src/*"],
+            "@/web/components/*": ["./src/components/*"],
+            "@/lib/*": ["./src/lib/*"],
+            "@/styles/*": ["./src/styles/*"],
+            "@/hooks/*": ["./src/hooks/*"],
+            "@/web/icons/*": ["./src/icons/*"]
+        }
     },
     "include": ["src"],
     "exclude": ["node_modules", "dist"]

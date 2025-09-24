@@ -1,5 +1,0 @@
-@import "tailwindcss";
-@import "@zora/tailwind-config";
-
-/* biome-ignore lint: custom source folder required. */
-@source "./";
