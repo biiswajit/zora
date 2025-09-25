@@ -5,19 +5,19 @@
     "exports": {
         "./styles.css": "./src/styles/styles.css",
         "./lib/*": {
-            "types": "./src/lib/*.ts",
+            "types": "./dist/lib/*.d.ts",
             "default": "./dist/lib/*.js"
         },
         "./web/components/*": {
-            "types": "./src/components/*.tsx",
+            "types": "./dist/components/*.d.ts",
             "default": "./dist/components/*.js"
         },
         "./web/icons/*": {
-            "types": "./src/icons/*.tsx",
+            "types": "./dist/icons/*.d.ts",
             "default": "./dist/icons/*.js"
         },
         "./hooks/*": {
-            "types": "./src/hooks/*.ts",
+            "types": "./dist/hooks/*.d.ts",
             "default": "./dist/hooks/*.js"
         }
     },
