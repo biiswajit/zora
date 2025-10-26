@@ -1,9 +1,4 @@
-import { Inter, Victor_Mono } from "next/font/google";
-
-export const victorMono = Victor_Mono({
-    variable: "--font-victor",
-    subsets: ["latin"],
-});
+import { Inter } from "next/font/google";
 
 export const inter = Inter({
     variable: "--font-inter",

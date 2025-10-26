@@ -1,0 +1,47 @@
+model Workspace {
+  id          String  @id @default(cuid())
+  name        String
+  description String? @db.Text
+  slug        String  @unique
+  color       Color   @default(DEFAULT)
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  users UsersOnWorkspaces[]
+
+  @@map("workspace")
+}
+
+model UsersOnWorkspaces {
+  id String @id @default(cuid())
+  userId String
+  workspaceId String
+  role Role @default(MEMBER)
+
+  joinedOn DateTime @default(now()) @map("joined_on")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  workspace Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, workspaceId])
+  @@index([workspaceId])
+  @@map("users_on_workspaces")
+}
+
+enum Color {
+  DEFAULT @map("f97316")
+  RED     @map("ff6c6b")
+  ORANGE  @map("ffa85f")
+  YELLOW  @map("fedf53")
+  GREEN   @map("64db7c")
+  BLUE    @map("47a8ff")
+  PURPLE  @map("e363f6")
+  GRAY    @map("acacb0")
+}
+
+enum Role {
+  ADMIN @map("admin")
+  MEMBER @map("member")
+}

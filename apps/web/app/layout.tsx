@@ -1,7 +1,8 @@
 import { cn } from "@zora/ui/lib/utils";
 import type { Metadata } from "next";
-import { inter, victorMono } from "@/styles/fonts";
+import { inter } from "@/styles/fonts";
 import "@/styles/globals.css";
+import RootProvider from "./providers";
 
 export const metadata: Metadata = {
     title: "Zora | Manage tasks",
@@ -14,8 +15,10 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en" className={cn(inter.variable, victorMono.variable)}>
-            <body>{children}</body>
+        <html lang="en" className={cn(inter.variable)}>
+            <body>
+                <RootProvider>{children}</RootProvider>
+            </body>
         </html>
     );
 }

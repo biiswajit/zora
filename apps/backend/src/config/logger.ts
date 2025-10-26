@@ -1,12 +1,13 @@
-import env from "@environment";
 import winston from "winston";
+import environment from "./environment";
 
 const levels = {
-    error: 0,
-    warn: 1,
-    info: 2,
-    http: 3,
-    debug: 4,
+    fatal: 0,
+    error: 1,
+    warn: 2,
+    info: 3,
+    http: 4,
+    debug: 5,
 };
 
 const colors = {
@@ -20,11 +21,15 @@ const colors = {
 winston.addColors(colors);
 
 const logger = winston.createLogger({
-    level: env.NODE_ENV === "development" ? "debug" : "warn",
+    level: environment.NODE_ENV === "development" ? "debug" : "warn",
     levels,
     format: winston.format.combine(
         winston.format.timestamp({ format: "YYYY-MM-DD HH:mm:ss" }),
-        winston.format.printf((info) => `${[info.timestamp]}: ${info.level}: ${info.message}`),
+        winston.format.splat(),
+        winston.format.printf((info) => {
+            const { timestamp, level, message, ...meta } = info;
+            return `${timestamp} : [${level}] : ${message} ${Object.keys(meta).length ? JSON.stringify(meta) : ""}`;
+        }),
     ),
     transports: [
         new winston.transports.File({

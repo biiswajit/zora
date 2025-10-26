@@ -4,7 +4,7 @@
     "type": "module",
     "private": true,
     "scripts": {
-        "dev": "zudoku dev",
+        "dev": "zudoku dev --port 3001",
         "build": "zudoku build",
         "preview": "zudoku preview"
     },

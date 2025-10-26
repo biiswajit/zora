@@ -1,4 +1,8 @@
 {
     "extends": "@zora/typescript-config/base.json",
-    "exclude": ["node_modules"]
+    "exclude": ["node_modules", "dist"],
+    "compilerOptions": {
+        "rootDir": "src",
+        "outDir": "dist"
+    }
 }

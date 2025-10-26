@@ -16,7 +16,7 @@
         "attributePosition": "auto",
         "indentStyle": "space",
         "indentWidth": 4,
-        "lineWidth": 120,
+        "lineWidth": 100,
         "lineEnding": "lf"
     },
     "linter": {
@@ -25,6 +25,10 @@
             "recommended": true,
             "suspicious": {
                 "noUnknownAtRules": "off"
+            },
+            "a11y": {
+                "noSvgWithoutTitle": "off",
+                "useSemanticElements": "off"
             }
         }
     },

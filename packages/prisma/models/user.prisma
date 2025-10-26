@@ -1,14 +1,15 @@
 model User {
   id            String    @id @default(cuid())
-  firstName     String @map("first_name")
-  lastName     String? @map("last_name")
+  name          String
   email         String    @unique
   emailVerified Boolean   @map("email_verified")
   image         String?
   createdAt     DateTime  @default(now()) @map("created_at")
   updatedAt     DateTime  @updatedAt @map("updated_at")
+
   sessions      Session[]
   accounts      Account[]
+  workspaces   UsersOnWorkspaces[]
 
   @@index([email, id])
   @@map("user")
@@ -45,4 +46,15 @@ model Account {
   user                  User      @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("account")
+}
+
+model Verification {
+  id         String    @id
+  identifier String
+  value      String
+  expiresAt  DateTime  @map("expires_at")
+  createdAt  DateTime? @map("created_at")
+  updatedAt  DateTime? @map("updated_at")
+
+  @@map("verification")
 }

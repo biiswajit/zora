@@ -4,13 +4,11 @@
         "baseUrl": ".",
         "paths": {
             "@zora/ui/*": ["../../packages/ui/src/*"],
-            "@/styles/*": ["./styles/*"]
-        },
-        "plugins": [
-            {
-                "name": "next"
-            }
-        ]
+            "@/styles/*": ["./styles/*"],
+            "@/utils/*": ["./utils/*"],
+            "@/ui/*": ["./ui/*"],
+            "@/queries/*": ["./queries/*"]
+        }
     },
     "include": ["**/*.ts", "**/*.tsx", "next-env.d.ts", "next.config.js", ".next/types/**/*.ts"],
     "exclude": ["node_modules"]

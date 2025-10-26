@@ -6,12 +6,14 @@
         "strict": true,
         "baseUrl": ".",
         "paths": {
-            "@environment": ["./src/config/environment.ts"],
-            "@logger": ["./src/config/logger.ts"],
-            "@morgan": ["./src/config/morgan.ts"],
-            "@router": ["./src/routes/index.ts"],
-            "@utils/*": ["./src/utils/*"],
-            "@middlewares/*": ["./src/middlewares/*"]
+            "@/config/*": ["./src/config/*"],
+            "@/router": ["./src/routes/index.ts"],
+            "@/utils/*": ["./src/utils/*"],
+            "@/middlewares/*": ["./src/middlewares/*"],
+            "@/controllers/*": ["./src/controllers/*"],
+            "@/services/*": ["./src/services/*"],
+            "@/types/*": ["./src/types/*"],
+            "@/errors/*": ["./src/errors/*"]
         }
     },
     "include": ["src"],
