@@ -2,13 +2,13 @@ import { prisma } from "@zora/prisma";
 import { betterAuth } from "better-auth";
 import { prismaAdapter } from "better-auth/adapters/prisma";
 import { lastLoginMethod } from "better-auth/plugins";
-import env from "@/config/environment";
+import environment from "@/config/environment";
 
 const auth = betterAuth({
-    secret: env.BETTER_AUTH_SECRET,
-    baseURL: env.BETTER_AUTH_URL,
+    secret: environment.BETTER_AUTH_SECRET,
+    baseURL: environment.BETTER_AUTH_URL,
     basePath: "/auth",
-    trustedOrigins: [env.WEB_CLIENT_URL],
+    trustedOrigins: [environment.WEB_CLIENT_URL],
     database: prismaAdapter(prisma, {
         provider: "postgresql",
     }),
@@ -16,12 +16,19 @@ const auth = betterAuth({
     socialProviders: {
         // TODO: add more social sign-on if needed
         google: {
-            clientId: env.GOOGLE_CLIENT_ID,
-            clientSecret: env.GOOGLE_CLIENT_SECRET,
+            clientId: environment.GOOGLE_CLIENT_ID,
+            clientSecret: environment.GOOGLE_CLIENT_SECRET,
         },
         github: {
-            clientId: env.GITHUB_CLIENT_ID,
-            clientSecret: env.GITHUB_CLIENT_SECRET,
+            clientId: environment.GITHUB_CLIENT_ID,
+            clientSecret: environment.GITHUB_CLIENT_SECRET,
+        },
+    },
+    advanced: {
+        cookies: {
+            session_token: {
+                name: "session_token",
+            },
         },
     },
     plugins: [

@@ -4,6 +4,7 @@ model Workspace {
   description String? @db.Text
   slug        String  @unique
   color       Color   @default(DEFAULT)
+  // TODO: add property for custom workspace logo
 
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
@@ -31,14 +32,14 @@ model UsersOnWorkspaces {
 }
 
 enum Color {
-  DEFAULT @map("f97316")
-  RED     @map("ff6c6b")
-  ORANGE  @map("ffa85f")
-  YELLOW  @map("fedf53")
-  GREEN   @map("64db7c")
-  BLUE    @map("47a8ff")
-  PURPLE  @map("e363f6")
-  GRAY    @map("acacb0")
+  DEFAULT @map("#f97316")
+  RED     @map("#ff6c6b")
+  ORANGE  @map("#ffa85f")
+  YELLOW  @map("#fedf53")
+  GREEN   @map("#64db7c")
+  BLUE    @map("#47a8ff")
+  PURPLE  @map("#e363f6")
+  GRAY    @map("#acacb0")
 }
 
 enum Role {

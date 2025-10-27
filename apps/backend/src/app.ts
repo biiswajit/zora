@@ -1,5 +1,6 @@
 import { toNodeHandler } from "better-auth/node";
 import compression from "compression";
+import cookieParser from "cookie-parser";
 import cors from "cors";
 import express, { type Express } from "express";
 import helmet from "helmet";
@@ -48,11 +49,14 @@ app.use((req, res, next) => {
     });
 });
 
+app.use(cookieParser());
+
 app.use(compression());
 
 app.use("/", router);
 
 app.use(respond);
+
 app.use(errorHandler);
 
 export default app;

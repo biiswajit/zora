@@ -19,6 +19,7 @@ const envSchema = z.object({
         .string()
         .default("false")
         .transform((online) => online === "true"),
+    APP_NAME: z.string().default("zora"),
     BETTER_AUTH_SECRET: z.string().default("something_secure"),
     BETTER_AUTH_URL: z.string().default("http://localhost:8080"),
     GOOGLE_CLIENT_ID: z.string(),
@@ -42,6 +43,7 @@ export default {
     CORS_ENABLED: env.CORS_ENABLED,
     MAX_PAYLOAD_SIZE: env.MAX_PAYLOAD_SIZE,
     SERVER_ONLINE: env.SERVER_ONLINE,
+    APP_NAME: env.APP_NAME,
     BETTER_AUTH_SECRET: env.BETTER_AUTH_SECRET,
     BETTER_AUTH_URL: env.BETTER_AUTH_URL,
     GOOGLE_CLIENT_ID: env.GOOGLE_CLIENT_ID,
