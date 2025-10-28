@@ -4,6 +4,8 @@ import { prismaAdapter } from "better-auth/adapters/prisma";
 import { lastLoginMethod } from "better-auth/plugins";
 import environment from "@/config/environment";
 
+// NOTE: right now using cookie cache in future use secondary storage like redis
+
 const auth = betterAuth({
     secret: environment.BETTER_AUTH_SECRET,
     baseURL: environment.BETTER_AUTH_URL,
@@ -24,10 +26,19 @@ const auth = betterAuth({
             clientSecret: environment.GITHUB_CLIENT_SECRET,
         },
     },
+    session: {
+        cookieCache: {
+            enabled: true,
+            maxAge: 15 * 60,
+        },
+    },
     advanced: {
         cookies: {
             session_token: {
                 name: "session_token",
+            },
+            session_data: {
+                name: "session_data",
             },
         },
     },
