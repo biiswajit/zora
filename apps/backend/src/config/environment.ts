@@ -8,18 +8,21 @@ const envSchema = z.object({
         .default("8080")
         .transform((str) => parseInt(str, 10)),
     HOST: z.string().default("localhost"),
-    WEB_CLIENT_URL: z.url().default("http://localhost:3000"),
-    WEB_DOC_URL: z.url().default("http://localhost:3001"),
+    APP_NAME: z.string().default("zora"),
+
+    CORS_ORIGIN_WEB: z.string().default("http://localhost:3000"),
     CORS_ENABLED: z
         .string()
         .default("false")
         .transform((enabled) => enabled === "true"),
-    MAX_PAYLOAD_SIZE: z.string().default("100kb"),
-    SERVER_ONLINE: z
+    CORS_METHODS: z.string().default("GET,POST,PATCH,DELETE"),
+    CORS_CREDENTIALS: z
         .string()
         .default("false")
-        .transform((online) => online === "true"),
-    APP_NAME: z.string().default("zora"),
+        .transform((enabled) => enabled === "true"),
+
+    MAX_PAYLOAD_SIZE: z.string().default("100kb"),
+
     BETTER_AUTH_SECRET: z.string().default("something_secure"),
     BETTER_AUTH_URL: z.string().default("http://localhost:8080"),
     GOOGLE_CLIENT_ID: z.string(),
@@ -38,12 +41,15 @@ export default {
     NODE_ENV: env.NODE_ENV,
     PORT_NUMBER: env.PORT_NUMBER,
     HOST: env.HOST,
-    WEB_CLIENT_URL: env.WEB_CLIENT_URL,
-    WEB_DOC_URL: env.WEB_DOC_URL,
-    CORS_ENABLED: env.CORS_ENABLED,
-    MAX_PAYLOAD_SIZE: env.MAX_PAYLOAD_SIZE,
-    SERVER_ONLINE: env.SERVER_ONLINE,
     APP_NAME: env.APP_NAME,
+
+    CORS_ORIGIN_WEB: env.CORS_ORIGIN_WEB,
+    CORS_ENABLED: env.CORS_ENABLED,
+    CORS_METHODS: env.CORS_METHODS,
+    CORS_CREDENTIALS: env.CORS_CREDENTIALS,
+
+    MAX_PAYLOAD_SIZE: env.MAX_PAYLOAD_SIZE,
+
     BETTER_AUTH_SECRET: env.BETTER_AUTH_SECRET,
     BETTER_AUTH_URL: env.BETTER_AUTH_URL,
     GOOGLE_CLIENT_ID: env.GOOGLE_CLIENT_ID,

@@ -10,7 +10,7 @@ const auth = betterAuth({
     secret: environment.BETTER_AUTH_SECRET,
     baseURL: environment.BETTER_AUTH_URL,
     basePath: "/auth",
-    trustedOrigins: [environment.WEB_CLIENT_URL],
+    trustedOrigins: [environment.CORS_ORIGIN_WEB],
     database: prismaAdapter(prisma, {
         provider: "postgresql",
     }),

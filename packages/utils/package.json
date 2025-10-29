@@ -1,5 +1,5 @@
 {
-    "name": "@zora/types",
+    "name": "@zora/utils",
     "version": "0.0.0",
     "description": "",
     "main": "dist/index.js",
@@ -9,7 +9,10 @@
     },
     "devDependencies": {
         "@zora/prisma": "workspace:*",
-        "@zora/typescript-config": "workspace:*",
+        "@zora/typescript-config": "workspace:^"
+    },
+    "dependencies": {
+        "@sindresorhus/slugify": "^3.0.0",
         "zod": "^4.1.8"
     },
     "keywords": [],

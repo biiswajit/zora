@@ -5,7 +5,6 @@ import app from "./app";
 
 export function startServer(): Server {
     const server = app.listen(environment.PORT_NUMBER, () => {
-        environment.SERVER_ONLINE = true;
         const protocol = environment.NODE_ENV === "development" ? "http" : "https";
         // NOTE: additional starups goes here
         logger.info(

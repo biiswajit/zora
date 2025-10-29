@@ -10,6 +10,7 @@
     },
     "dependencies": {
         "@zora/prisma": "workspace:*",
+        "@zora/utils": "workspace:^",
         "better-auth": "^1.3.11",
         "compression": "^1.8.1",
         "cookie-parser": "^1.4.7",
