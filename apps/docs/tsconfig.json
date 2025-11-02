@@ -1,5 +1,0 @@
-{
-    "extends": "@zora/typescript-config/react-library.json",
-    "include": ["src", "zudoku.config.tsx", "src/home.tsx"],
-    "exclude": ["dist", "node_modules"]
-}

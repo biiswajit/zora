@@ -11,7 +11,8 @@
             "@/utils": ["./src/utils/index.ts"],
             "@/middlewares": ["./src/middlewares/index.ts"],
             "@/types": ["./src/types/index.ts"],
-            "@/errors": ["./src/errors/index.ts"]
+            "@/errors": ["./src/errors/index.ts"],
+            "@/openapi": ["./src/openapi/index.ts"]
         }
     },
     "include": ["src"],
