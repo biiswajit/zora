@@ -4,9 +4,11 @@ import { generateErrorMessage } from "zod-error";
 import logger from "@/config/logger";
 import { InternalError } from "@/errors";
 import { ErrorCodes, type StandardResponse } from "@/types";
-import { asyncErrorHandler, ERRORS_TO_LOG, getHttpContext } from "@/utils";
+import { asyncErrorHandler, getHttpContext } from "@/utils";
 
 const FALLBACK_ERROR = new InternalError();
+
+const logTheseErrors = [ErrorCodes.Internal];
 
 export const errorHandler: ErrorRequestHandler = asyncErrorHandler(async (err, req, res) => {
     err = Array.isArray(err) ? err[0] : err;
@@ -35,7 +37,10 @@ export const errorHandler: ErrorRequestHandler = asyncErrorHandler(async (err, r
                         },
                         message: {
                             enabled: true,
-                            transform: (msg) => msg.value,
+                            transform: ({ value }) => {
+                                const messages = value.split(":");
+                                return messages[1] ? messages[1] : value;
+                            },
                         },
                     }),
                 },
@@ -44,7 +49,7 @@ export const errorHandler: ErrorRequestHandler = asyncErrorHandler(async (err, r
     }
 
     if (err.name === "ZoraError") {
-        if (ERRORS_TO_LOG.includes(err.code)) {
+        if (logTheseErrors.includes(err.code)) {
             logger.error("Zora error", {
                 http: getHttpContext(req),
                 error: {
@@ -62,6 +67,30 @@ export const errorHandler: ErrorRequestHandler = asyncErrorHandler(async (err, r
                 code: err.code,
                 message: err.message,
                 extensions: err.extensions,
+            },
+        } as StandardResponse);
+    }
+
+    if (err.code === "P2002") {
+        res.status(409);
+        return res.json({
+            status: "error",
+            error: {
+                status: 409,
+                code: ErrorCodes.Conflict,
+                message: "Resource already exists",
+            },
+        } as StandardResponse);
+    }
+
+    if (err.code === "P2025") {
+        res.status(404);
+        return res.json({
+            status: "error",
+            error: {
+                status: 404,
+                code: ErrorCodes.NotFound,
+                message: "Resource not found",
             },
         } as StandardResponse);
     }
