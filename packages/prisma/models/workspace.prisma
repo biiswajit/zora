@@ -1,0 +1,47 @@
+model Workspace {
+  id          String  @id @default(cuid())
+  name        String
+  slug        String  @unique
+  color       Color   @default(default)
+  // TODO: add property for custom workspace logo
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  users UsersOnWorkspaces[]
+
+  @@map("workspace")
+}
+
+model UsersOnWorkspaces {
+  id String @id @default(cuid())
+  userId String
+  workspaceId String
+  role Role @default(owner)
+
+  joinedOn DateTime @default(now()) @map("joined_on")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  workspace Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, workspaceId])
+  @@index([workspaceId])
+  @@map("users_on_workspaces")
+}
+
+enum Color {
+  default
+  red    
+  orange 
+  yellow 
+  green  
+  blue   
+  purple 
+  gray
+}
+
+enum Role {
+  owner
+  member
+}

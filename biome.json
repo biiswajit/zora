@@ -16,13 +16,20 @@
         "attributePosition": "auto",
         "indentStyle": "space",
         "indentWidth": 4,
-        "lineWidth": 120,
+        "lineWidth": 100,
         "lineEnding": "lf"
     },
     "linter": {
         "enabled": true,
         "rules": {
-            "recommended": true
+            "recommended": true,
+            "suspicious": {
+                "noUnknownAtRules": "off"
+            },
+            "a11y": {
+                "noSvgWithoutTitle": "off",
+                "useSemanticElements": "off"
+            }
         }
     },
     "javascript": {
@@ -48,6 +55,12 @@
         "formatter": {
             "enabled": true,
             "trailingCommas": "none"
+        }
+    },
+    "css": {
+        "formatter": {
+            "enabled": true,
+            "indentWidth": 4
         }
     }
 }

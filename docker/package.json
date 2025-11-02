@@ -1,0 +1,14 @@
+{
+    "name": "docker",
+    "version": "0.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start": "docker compose up -d",
+        "stop": "docker compose down",
+        "dev": "docker compose up"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC"
+}

@@ -2,7 +2,18 @@
     "extends": "@zora/typescript-config/base.json",
     "compilerOptions": {
         "rootDir": "src",
-        "outDir": "dist"
+        "outDir": "dist",
+        "strict": true,
+        "baseUrl": ".",
+        "paths": {
+            "@/config/*": ["./src/config/*"],
+            "@/router": ["./src/routes/index.ts"],
+            "@/utils": ["./src/utils/index.ts"],
+            "@/middlewares": ["./src/middlewares/index.ts"],
+            "@/types": ["./src/types/index.ts"],
+            "@/errors": ["./src/errors/index.ts"],
+            "@/openapi": ["./src/openapi/index.ts"]
+        }
     },
     "include": ["src"],
     "exclude": ["node_modules", "dist"]

@@ -1,11 +1,14 @@
 {
     "extends": "@zora/typescript-config/nextjs.json",
     "compilerOptions": {
-        "plugins": [
-            {
-                "name": "next"
-            }
-        ]
+        "baseUrl": ".",
+        "paths": {
+            "@zora/ui/*": ["../../packages/ui/src/*"],
+            "@/styles/*": ["./styles/*"],
+            "@/utils/*": ["./utils/*"],
+            "@/ui/*": ["./ui/*"],
+            "@/queries/*": ["./queries/*"]
+        }
     },
     "include": ["**/*.ts", "**/*.tsx", "next-env.d.ts", "next.config.js", ".next/types/**/*.ts"],
     "exclude": ["node_modules"]

@@ -1,0 +1,21 @@
+{
+    "name": "@zora/utils",
+    "version": "0.0.0",
+    "description": "",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "scripts": {
+        "build": "tsc"
+    },
+    "devDependencies": {
+        "@zora/prisma": "workspace:*",
+        "@zora/typescript-config": "workspace:^"
+    },
+    "dependencies": {
+        "@sindresorhus/slugify": "^3.0.0",
+        "zod": "^4.1.8"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC"
+}
