@@ -1,8 +1,8 @@
+import { version } from "package.json";
 import winston from "winston";
 import environment from "./environment";
 
 const levels = {
-    fatal: 0,
     error: 1,
     warn: 2,
     info: 3,
@@ -23,14 +23,23 @@ winston.addColors(colors);
 const logger = winston.createLogger({
     level: environment.NODE_ENV === "development" ? "debug" : "warn",
     levels,
+    defaultMeta: {
+        version,
+        service: "backend",
+        environment: environment.NODE_ENV,
+    },
     format: winston.format.combine(
-        winston.format.timestamp({ format: "YYYY-MM-DD HH:mm:ss" }),
-        winston.format.splat(),
-        winston.format.printf((info) => {
-            const { timestamp, level, message, ...meta } = info;
-            return `${timestamp} : [${level}] : ${message} ${Object.keys(meta).length ? JSON.stringify(meta) : ""}`;
-        }),
+        winston.format.timestamp({ format: "YYYY-MM-DD hh:mm:ss A" }),
+        winston.format.errors({ stack: true }),
+        winston.format.json(),
+        winston.format.align(),
     ),
+    exceptionHandlers: [
+        new winston.transports.File({
+            level: "error",
+            filename: "logs/exceptions.log",
+        }),
+    ],
     transports: [
         new winston.transports.File({
             level: "error",

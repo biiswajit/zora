@@ -4,10 +4,11 @@ import { InternalServerError } from "@/errors/index";
 import type { StandardError } from "@/types/error";
 import type { StandardResponse } from "@/types/respond";
 import asyncErrorHandler from "@/utils/async-error-handler";
+import { getHttpContext } from "../utils";
 
 const FALLBACK_ERROR = new InternalServerError();
 
-export const errorHandler: ErrorRequestHandler = asyncErrorHandler(async (err, _, res) => {
+export const errorHandler: ErrorRequestHandler = asyncErrorHandler(async (err, req, res) => {
     const errors: StandardError[] = [];
     let status: number | null = null;
 
@@ -17,14 +18,20 @@ export const errorHandler: ErrorRequestHandler = asyncErrorHandler(async (err, _
         let message: string = "";
 
         if (error.name === "ZoraError") {
-            logger.debug("Zora error", error);
+            logger.debug("something went wrong", {
+                http: getHttpContext(req),
+                error: {
+                    ...error,
+                    stack: error.stack,
+                },
+            });
 
             if (status === null) status = error.status;
             else if (status !== error.status) status = FALLBACK_ERROR.status;
 
             message = error.message;
         } else {
-            logger.error("Unknown error", error);
+            logger.error(error);
 
             status = FALLBACK_ERROR.status;
 
