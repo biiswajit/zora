@@ -2,8 +2,7 @@ import type { StandardError } from "./error";
 
 export interface StandardResponse<D = unknown, M = unknown> {
     status: "success" | "error";
-    errors?: StandardError[];
-    message?: string;
+    error?: StandardError;
     meta?: M;
     data?: D;
 }

@@ -1,7 +1,8 @@
 export interface StandardError {
     message: string;
-    extensions: {
-        code: string;
+    code: string;
+    status: number;
+    extensions?: {
         [key: string]: unknown;
     };
 }

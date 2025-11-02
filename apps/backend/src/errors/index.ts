@@ -1,3 +1,3 @@
 export * from "./internal";
-export * from "./invalid-credentials";
-export * from "./invalid-payload";
+export * from "./unauthorized";
+export * from "./unprocessable";

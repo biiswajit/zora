@@ -1,9 +1,8 @@
 import type { ErrorRequestHandler } from "express";
 import logger from "@/config/logger";
-import { InternalServerError } from "@/errors";
-import type { StandardError, StandardResponse } from "@/types";
-
-const FALLBACK_ERROR = new InternalServerError();
+import { InternalError } from "@/errors";
+import type { StandardResponse } from "@/types";
+import { getHttpContext } from "./get-http-context";
 
 export function asyncErrorHandler(
     fn: (...args: Parameters<ErrorRequestHandler>) => Promise<unknown>,
@@ -11,7 +10,13 @@ export function asyncErrorHandler(
     return (err, req, res, next) =>
         fn(err, req, res, next).catch((error) => {
             try {
-                logger.error("Unknown error", error);
+                logger.error("An error occured in error handler middleware", {
+                    http: getHttpContext(req),
+                    error: {
+                        ...error,
+                        stack: error.stack,
+                    },
+                });
             } catch {
                 // NOTE: ignore
             }
@@ -19,17 +24,18 @@ export function asyncErrorHandler(
             // NOTE: it is recommanded to delegate the error handing to express where response headers already sent
             if (res.headersSent) return next(error);
 
+            const FALLBACK_ERROR = new InternalError();
+
             res.status(FALLBACK_ERROR.status);
+
             return res.json({
                 status: "error",
-                errors: [
-                    {
-                        message: FALLBACK_ERROR.message,
-                        extensions: {
-                            code: FALLBACK_ERROR.code,
-                        },
-                    },
-                ] as StandardError[],
+                error: {
+                    code: FALLBACK_ERROR.code,
+                    status: FALLBACK_ERROR.status,
+                    message: FALLBACK_ERROR.message,
+                    extensions: FALLBACK_ERROR.extensions ?? undefined,
+                },
             } as StandardResponse);
         });
 }

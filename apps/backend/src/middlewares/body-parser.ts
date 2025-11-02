@@ -1,6 +1,6 @@
 import { json, type RequestHandler } from "express";
 import environment from "@/config/environment";
-import { InvalidPayloadError } from "@/errors";
+import { UnprocessableError } from "@/errors";
 
 export const bodyParser: RequestHandler = (req, res, next) => {
     json({
@@ -8,8 +8,9 @@ export const bodyParser: RequestHandler = (req, res, next) => {
     })(req, res, (err) => {
         if (err) {
             return next(
-                new InvalidPayloadError({
+                new UnprocessableError({
                     reason: err.message,
+                    suggestion: `Payload size must be within ${environment.MAX_PAYLOAD_SIZE}`,
                 }),
             );
         }

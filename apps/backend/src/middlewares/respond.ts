@@ -13,7 +13,6 @@ export const respond: RequestHandler = asyncHandler(async (_, res) => {
 
     return res.json({
         status: "success",
-        message: res.locals.message ?? undefined,
         data: res.locals.payload,
         meta: res.locals.meta ?? undefined,
     } as StandardResponse);

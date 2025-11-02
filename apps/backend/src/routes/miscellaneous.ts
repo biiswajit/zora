@@ -1,21 +1,20 @@
 import { prisma } from "@zora/prisma";
 import { slugSchema } from "@zora/utils";
 import { Router } from "express";
-import { InternalServerError, InvalidPayloadError } from "@/errors";
+import { UnprocessableError } from "@/errors";
 import { asyncHandler, getSessionOrThrow } from "@/utils";
 
 const router: Router = Router();
 
 router.get(
     "/health",
-    asyncHandler((_req, _res, _next) => {
-        // res.locals.payload = "Server is ready to serve";
-        // res.locals.meta = {
-        //     version: "0.0.0",
-        // };
+    asyncHandler((_req, res, next) => {
+        res.locals.payload = "Server is ready to serve";
+        res.locals.meta = {
+            version: "0.0.0",
+        };
 
-        // next();
-        throw new InternalServerError();
+        next();
     }),
 );
 
@@ -38,8 +37,9 @@ router.get(
         const { slug } = req.query;
 
         if (!slug) {
-            throw new InvalidPayloadError({
+            throw new UnprocessableError({
                 reason: "Parameter slug required",
+                suggestion: "Please provide a workspace slug",
             });
         }
 

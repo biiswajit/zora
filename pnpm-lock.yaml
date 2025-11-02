@@ -56,6 +56,9 @@ importers:
       zod:
         specifier: ^4.1.8
         version: 4.1.8
+      zod-error:
+        specifier: ^2.0.0
+        version: 2.0.0(zod@4.1.8)
     devDependencies:
       '@types/compression':
         specifier: ^1.8.1
@@ -5174,6 +5177,11 @@ packages:
   yocto-queue@0.1.0:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
+
+  zod-error@2.0.0:
+    resolution: {integrity: sha512-ivSoPm7h5SEGG8GUvQ7YTwrnEx36qNmUIU5hSIGcqcdl7+ZFoTrYXAdQEs3KP/rkihrrR9REEdOeGU+fWdMoNw==}
+    peerDependencies:
+      zod: ^4.0.0
 
   zod@3.25.76:
     resolution: {integrity: sha512-gzUt/qt81nXsFGKIFcC3YnfEAx5NkunCfnDlvuBSSFS02bcXu4Lmea0AFIUwbLWxWPx3d9p8S5QoaujKcNQxcQ==}
@@ -10910,6 +10918,10 @@ snapshots:
       yargs-parser: 22.0.0
 
   yocto-queue@0.1.0: {}
+
+  zod-error@2.0.0(zod@4.1.8):
+    dependencies:
+      zod: 4.1.8
 
   zod@3.25.76: {}
 

@@ -1,4 +1,4 @@
-import type { ErrorCode } from "./error-codes";
+import type { ErrorCodes } from "@/types";
 
 /**
  * ## Create custom error
@@ -13,7 +13,7 @@ import type { ErrorCode } from "./error-codes";
  * @returns An anonymous class extending from default `Error` class
  * @description the property `extensions` ise a generic type thre you can pass some optional details about the error
  */
-export function createError<Extensions = void>(code: ErrorCode, message: string, status: number) {
+export function createError<Extensions = void>(code: ErrorCodes, message: string, status: number) {
     return class extends Error {
         override name = "ZoraError";
         code = code;
@@ -23,10 +23,6 @@ export function createError<Extensions = void>(code: ErrorCode, message: string,
         constructor(extensions: Extensions) {
             super(message);
             this.extensions = extensions;
-        }
-
-        override toString() {
-            return `${this.name} [${this.code}]: ${this.message}`;
         }
     };
 }

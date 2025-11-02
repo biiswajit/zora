@@ -1,6 +1,6 @@
 import type { IncomingHttpHeaders } from "node:http";
 import { fromNodeHeaders } from "better-auth/node";
-import { InvalidCredentialsError } from "@/errors";
+import { UnauthorizedError } from "@/errors";
 import { auth } from "./auth";
 
 export async function getSessionOrThrow(
@@ -15,7 +15,7 @@ export async function getSessionOrThrow(
     });
 
     if (!res) {
-        throw new InvalidCredentialsError();
+        throw new UnauthorizedError();
     }
 
     return res;

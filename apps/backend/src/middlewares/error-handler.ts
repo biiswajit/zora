@@ -1,54 +1,87 @@
 import type { ErrorRequestHandler } from "express";
+import { ZodError } from "zod";
+import { generateErrorMessage } from "zod-error";
 import logger from "@/config/logger";
-import { InternalServerError } from "@/errors";
-import type { StandardError, StandardResponse } from "@/types";
-import { asyncErrorHandler, getHttpContext } from "@/utils";
+import { InternalError } from "@/errors";
+import { ErrorCodes, type StandardResponse } from "@/types";
+import { asyncErrorHandler, ERRORS_TO_LOG, getHttpContext } from "@/utils";
 
-const FALLBACK_ERROR = new InternalServerError();
+const FALLBACK_ERROR = new InternalError();
 
 export const errorHandler: ErrorRequestHandler = asyncErrorHandler(async (err, req, res) => {
-    const errors: StandardError[] = [];
-    let status: number | null = null;
+    err = Array.isArray(err) ? err[0] : err;
 
-    const receivedErrors = Array.isArray(err) ? err : [err];
-
-    for (const error of receivedErrors) {
-        let message: string = "";
-
-        if (error.name === "ZoraError") {
-            logger.debug("something went wrong", {
-                http: getHttpContext(req),
-                error: {
-                    ...error,
-                    stack: error.stack,
+    if (err instanceof ZodError) {
+        res.status(422);
+        return res.json({
+            status: "error",
+            error: {
+                status: 422,
+                code: ErrorCodes.Unprocessable,
+                message: "The request payload contains invalid data",
+                extensions: {
+                    reason: generateErrorMessage(err.issues, {
+                        maxErrors: 1,
+                        delimiter: {
+                            component: "",
+                        },
+                        path: {
+                            enabled: true,
+                            type: "objectNotation",
+                            label: "",
+                        },
+                        code: {
+                            enabled: false,
+                        },
+                        message: {
+                            enabled: true,
+                            transform: (msg) => msg.value,
+                        },
+                    }),
                 },
-            });
-
-            if (status === null) status = error.status;
-            else if (status !== error.status) status = FALLBACK_ERROR.status;
-
-            message = error.message;
-        } else {
-            logger.error(error);
-
-            status = FALLBACK_ERROR.status;
-
-            message = FALLBACK_ERROR.message;
-        }
-
-        errors.push({
-            message: message,
-            extensions: {
-                ...(error.extensions ?? {}),
-                code: error.code ?? FALLBACK_ERROR.code,
             },
-        });
+        } as StandardResponse);
     }
 
-    res.status(status ?? FALLBACK_ERROR.status);
+    if (err.name === "ZoraError") {
+        if (ERRORS_TO_LOG.includes(err.code)) {
+            logger.error("Zora error", {
+                http: getHttpContext(req),
+                error: {
+                    ...err,
+                    stack: err.stack,
+                },
+            });
+        }
 
+        res.status(err.status);
+        return res.json({
+            status: "error",
+            error: {
+                status: err.status,
+                code: err.code,
+                message: err.message,
+                extensions: err.extensions,
+            },
+        } as StandardResponse);
+    }
+
+    logger.error("Unknown error", {
+        http: getHttpContext(req),
+        error: {
+            ...err,
+            stack: err.stack,
+        },
+    });
+
+    res.status(FALLBACK_ERROR.status);
     return res.json({
         status: "error",
-        errors: errors,
+        error: {
+            status: FALLBACK_ERROR.status,
+            code: FALLBACK_ERROR.code,
+            message: FALLBACK_ERROR.message,
+            extensions: FALLBACK_ERROR.extensions,
+        },
     } as StandardResponse);
 });

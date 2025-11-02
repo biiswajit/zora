@@ -19,7 +19,8 @@
         "express": "^5.1.0",
         "helmet": "^8.1.0",
         "winston": "^3.17.0",
-        "zod": "^4.1.8"
+        "zod": "^4.1.8",
+        "zod-error": "^2.0.0"
     },
     "devDependencies": {
         "@types/compression": "^1.8.1",

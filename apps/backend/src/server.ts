@@ -14,7 +14,7 @@ export function startServer(): Server {
 
     server.on("error", (error: NodeJS.ErrnoException) => {
         if (error.code === "EADDRINUSE") {
-            logger.error(`${environment.PORT_NUMBER} already in use.`);
+            logger.error(`${environment.PORT_NUMBER} already in use.`, error);
         } else {
             logger.error("Server failed to start", error);
         }
