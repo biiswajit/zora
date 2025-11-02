@@ -12,4 +12,4 @@ if (environment.CORS_ENABLED === true) {
     });
 }
 
-export default corsMiddleware;
+export { corsMiddleware };

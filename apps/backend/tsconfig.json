@@ -8,12 +8,10 @@
         "paths": {
             "@/config/*": ["./src/config/*"],
             "@/router": ["./src/routes/index.ts"],
-            "@/utils/*": ["./src/utils/*"],
-            "@/middlewares/*": ["./src/middlewares/*"],
-            "@/controllers/*": ["./src/controllers/*"],
-            "@/services/*": ["./src/services/*"],
-            "@/types/*": ["./src/types/*"],
-            "@/errors/*": ["./src/errors/*"]
+            "@/utils": ["./src/utils/index.ts"],
+            "@/middlewares": ["./src/middlewares/index.ts"],
+            "@/types": ["./src/types/index.ts"],
+            "@/errors": ["./src/errors/index.ts"]
         }
     },
     "include": ["src"],

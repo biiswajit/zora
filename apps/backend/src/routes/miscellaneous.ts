@@ -1,15 +1,14 @@
 import { prisma } from "@zora/prisma";
 import { slugSchema } from "@zora/utils";
 import { Router } from "express";
-import { InternalServerError, InvalidPayloadError } from "@/errors/index";
-import asyncHandler from "@/utils/async-handler";
-import getSessionOrThrow from "@/utils/get-session";
+import { InternalServerError, InvalidPayloadError } from "@/errors";
+import { asyncHandler, getSessionOrThrow } from "@/utils";
 
 const router: Router = Router();
 
 router.get(
     "/health",
-    asyncHandler((_req, res, next) => {
+    asyncHandler((_req, _res, _next) => {
         // res.locals.payload = "Server is ready to serve";
         // res.locals.meta = {
         //     version: "0.0.0",

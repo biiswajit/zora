@@ -6,7 +6,7 @@ import environment from "@/config/environment";
 
 // NOTE: right now using cookie cache in future use secondary storage like redis
 
-const auth = betterAuth({
+export const auth = betterAuth({
     secret: environment.BETTER_AUTH_SECRET,
     baseURL: environment.BETTER_AUTH_URL,
     basePath: "/auth",
@@ -49,5 +49,3 @@ const auth = betterAuth({
         }),
     ],
 });
-
-export default auth;

@@ -1,8 +1,7 @@
 import { prisma } from "@zora/prisma";
 import { createWorkspaceSchema, workspaceSchema } from "@zora/utils";
 import { Router } from "express";
-import asyncHandler from "@/utils/async-handler";
-import getSessionOrThrow from "@/utils/get-session";
+import { asyncHandler, getSessionOrThrow } from "@/utils";
 
 const router: Router = Router();
 

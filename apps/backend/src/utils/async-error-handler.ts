@@ -1,12 +1,11 @@
 import type { ErrorRequestHandler } from "express";
 import logger from "@/config/logger";
-import { InternalServerError } from "@/errors/index";
-import type { StandardError } from "@/types/error";
-import type { StandardResponse } from "@/types/respond";
+import { InternalServerError } from "@/errors";
+import type { StandardError, StandardResponse } from "@/types";
 
 const FALLBACK_ERROR = new InternalServerError();
 
-export default function asyncErrorHandler(
+export function asyncErrorHandler(
     fn: (...args: Parameters<ErrorRequestHandler>) => Promise<unknown>,
 ): (...args: Parameters<ErrorRequestHandler>) => Promise<ReturnType<ErrorRequestHandler>> {
     return (err, req, res, next) =>

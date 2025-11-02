@@ -5,12 +5,9 @@ import express, { type Express } from "express";
 import helmet from "helmet";
 import environment from "@/config/environment";
 import morgan from "@/config/morgan";
-import bodyParser from "@/middlewares/body-parser";
-import cors from "@/middlewares/cors";
-import { errorHandler } from "@/middlewares/error-handler";
-import { respond } from "@/middlewares/respond";
+import { bodyParser, corsMiddleware, errorHandler, respond } from "@/middlewares";
 import router from "@/router";
-import auth from "@/utils/auth";
+import { auth } from "@/utils";
 
 const app: Express = express();
 
@@ -21,7 +18,7 @@ if (environment.NODE_ENV === "development") {
 // TODO: make a seperate file in middlewares folder
 app.use(helmet());
 
-app.use(cors);
+app.use(corsMiddleware);
 
 app.all("/auth/*splat", toNodeHandler(auth));
 

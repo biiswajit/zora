@@ -1,6 +1,6 @@
 import type { RequestHandler } from "express";
-import type { StandardResponse } from "@/types/respond";
-import asyncHandler from "@/utils/async-handler";
+import type { StandardResponse } from "@/types";
+import { asyncHandler } from "@/utils";
 
 export const respond: RequestHandler = asyncHandler(async (_, res) => {
     if (!res.locals.payload) {

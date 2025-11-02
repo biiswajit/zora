@@ -1,8 +1,8 @@
 import { json, type RequestHandler } from "express";
 import environment from "@/config/environment";
-import { InvalidPayloadError } from "@/errors/index";
+import { InvalidPayloadError } from "@/errors";
 
-const bodyParser: RequestHandler = (req, res, next) => {
+export const bodyParser: RequestHandler = (req, res, next) => {
     json({
         limit: environment.MAX_PAYLOAD_SIZE,
     })(req, res, (err) => {
@@ -17,5 +17,3 @@ const bodyParser: RequestHandler = (req, res, next) => {
         return next();
     });
 };
-
-export default bodyParser;

@@ -1,9 +1,9 @@
 import type { IncomingHttpHeaders } from "node:http";
 import { fromNodeHeaders } from "better-auth/node";
-import { InvalidCredentialsError } from "@/errors/index";
-import auth from "./auth";
+import { InvalidCredentialsError } from "@/errors";
+import { auth } from "./auth";
 
-export default async function getSessionOrThrow(
+export async function getSessionOrThrow(
     headers: IncomingHttpHeaders,
     disableCookieCache: boolean = false,
 ) {
