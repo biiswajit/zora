@@ -1,5 +1,6 @@
 import { createDocument } from "zod-openapi";
 import { errorResponses } from "./errors";
+import { miscPaths } from "./misc";
 import { workspacesPaths } from "./workspaces";
 
 export const document = createDocument({
@@ -21,6 +22,7 @@ export const document = createDocument({
     ],
     paths: {
         ...workspacesPaths,
+        ...miscPaths,
     },
     components: {
         securitySchemes: {

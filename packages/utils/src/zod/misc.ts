@@ -8,6 +8,7 @@ const roleSchema = z
 
 const colorSchema = z
     .enum(["default", "red", "orange", "yellow", "green", "blue", "purple", "gray"])
+    .optional()
     .describe("Hex color code for workspaces");
 
 const slugSchema = z
